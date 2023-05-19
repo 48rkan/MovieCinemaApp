@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  NewMovieApp
+
+  Created by Erkan Emir on 29.04.23.
+  
+*/
+
+"home_title"  = "Movies";
+"Popular"     = "Popular";
+"Top Rated"   = "Top Rated";
+"Now Playing" = "Now Playing";
+"Upcoming"    = "Upcoming";

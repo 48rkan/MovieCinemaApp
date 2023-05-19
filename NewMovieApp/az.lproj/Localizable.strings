@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  NewMovieApp
+
+  Created by Erkan Emir on 29.04.23.
+  
+*/
+
+"home_title"  = "Kinolar";
+"Popular"     = "Populyar";
+"Top Rated"   = "Ən çox point alan";
+"Now Playing" = "Hal-hazırda";
+"Upcoming"    = "Tezliklə";
