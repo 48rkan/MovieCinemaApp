@@ -17,6 +17,7 @@ class AuthService {
         CoreService.request(type: RequestTokenStruct.self,
                             url: CoreHelper.shared.url(path: "/authentication/token/new")) { items, error in
             guard let token = items?.requestToken else { return }
+            print(items)
             self.requestToken = token
             completion()
         }
@@ -35,6 +36,8 @@ class AuthService {
                             encoding: JSONEncoding.default) { items, error in
             guard let token = items?.requestToken else { return }
             self.requestToken = token
+            print(self.requestToken)
+            print(items)
             completion()
         }
     }
@@ -49,6 +52,7 @@ class AuthService {
                             encoding: JSONEncoding.default) { items, error in
             
             guard let sessionID = items?.sessionID else { return }
+            print(items)
             self.sessionID = sessionID
             complete(sessionID,error)
         }

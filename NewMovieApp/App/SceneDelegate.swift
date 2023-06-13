@@ -17,6 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = TabBarController()
         GenreClass.shared.fetchAllGenre()
         FavouritedClass.shared.fetchFavourited()
+        Token.shared.configure()
         window?.makeKeyAndVisible()
         
     }
