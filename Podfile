@@ -9,7 +9,7 @@ target 'NewMovieApp' do
 pod 'SDWebImage'
 pod 'JGProgressHUD'
 pod 'Alamofire'
-
+pod 'KeychainSwift', '~> 20.0'
 
 
 

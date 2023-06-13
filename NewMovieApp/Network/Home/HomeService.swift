@@ -26,31 +26,6 @@ public class HomeService: HomeManagerProtocol {
             completion(items,error)
         }
     }
-    
-//    static func getPopularMovies(pageIndex: Int, completion: @escaping (PopularMovie?,Error?)->()) {
-//        CoreManager.request(type: PopularMovie.self, url: CoreManager.url(path: "/movie/popular") + "&page=\(pageIndex)") { items, error in
-//            completion(items,error)
-//        }
-//    }
-//    
-//    static func getTopRatedMovies(pageIndex: Int, completion: @escaping (PopularMovie?,Error?)->()) {
-//        CoreManager.request(type: PopularMovie.self, url: CoreManager.url(path: "/movie/top_rated" ) + "&page=\(pageIndex)") { items, error in
-//            completion(items,error)
-//        }
-//    }
-//    
-//    static func getNowPlayingMovies(pageIndex: Int, completion: @escaping (PopularMovie?,Error?)->()) {
-//        CoreManager.request(type: PopularMovie.self, url: CoreManager.url(path: "/movie/now_playing" ) + "&page=\(pageIndex)") { items, error in
-//            completion(items,error)
-//        }
-//    }
-//    
-//    static func getUpComingMovies(pageIndex: Int, completion: @escaping (PopularMovie?,Error?)->()) {
-//        CoreManager.request(type: PopularMovie.self, url: CoreManager.url(path: "/movie/upcoming" ) + "&page=\(pageIndex)") { items, error in
-//            completion(items,error)
-//        }
-//    }
-    
 }
 
 

@@ -72,7 +72,10 @@ class HomeController: UIViewController {
     }
     
     @objc func tappedLogOut() {
+        UserDefaults.standard.set(false, forKey: "SUCCESS_LOGIN")
+
         let controller = LoginController()
+        controller.delegate = tabBarController as? TabBarController
         let nav = UINavigationController(rootViewController: controller)
         nav.modalPresentationStyle = .fullScreen
         
@@ -98,7 +101,11 @@ extension HomeController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize { CGSize(width: view.frame.width , height: 318) }
 }
 
-extension HomeController: UICollectionViewDelegate { }
+extension HomeController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        print(viewModel.category[0].movies[indexPath.row].id)
+    }
+}
 
 extension HomeController: HomeCellDelegate {
     func cell(_ cell: HomeCell, wantsToAllMovies movies: Category) {

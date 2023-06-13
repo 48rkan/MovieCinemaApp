@@ -11,6 +11,11 @@ import SDWebImage
 protocol TopImageBottomLabelCellProtocol {
     var imageURL   :String { get }
     var titleText  :String { get }
+    var movieID :Int { get }
+}
+
+protocol TopImageBottomLabelCellDelegate: AnyObject {
+    func doFavourite(_ cell: TopImageBottomLabelCell,id: Int)
 }
 
 class TopImageBottomLabelCell: UICollectionViewCell {
@@ -18,6 +23,8 @@ class TopImageBottomLabelCell: UICollectionViewCell {
     public var viewModel: TopImageBottomLabelCellViewModel? {
         didSet { configure() }
     }
+    
+    weak var delegate: TopImageBottomLabelCellDelegate?
     
     private let movieImage: UIImageView = {
         let image = UIImageView()
@@ -41,6 +48,13 @@ class TopImageBottomLabelCell: UICollectionViewCell {
 
         return label
     }()
+    
+    lazy var favouriteButton: UIButton = {
+        let b = UIButton()
+//        b.setImage(UIImage(named: "unstar"), for: .normal)
+        b.addTarget(self, action: #selector(doFavourite), for: .touchUpInside)
+        return b
+    }()
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -59,12 +73,20 @@ class TopImageBottomLabelCell: UICollectionViewCell {
     // cell'ler collection'a yerlesende cagirilir
     override func prepareForReuse() { super.prepareForReuse() }
     
+    @objc func doFavourite() {
+        delegate?.doFavourite(self, id: viewModel?.items.movieID ?? 0)
+        
+    }
+    
     private func configureUI() {
         addSubview(movieImage)
         movieImage.anchor(top: topAnchor,left: leftAnchor,
                           right: rightAnchor,paddingTop: 10,
                           paddingLeft: 10, paddingRight: 10)
         movieImage.equalHeight(percent: 0.75, mainHeight: heightAnchor)
+        
+        addSubview(favouriteButton)
+        favouriteButton.anchor(top: movieImage.topAnchor,left: movieImage.leftAnchor,paddingTop: 4,paddingLeft: 4)
         
         addSubview(movieTitle)
         movieTitle.anchor(top: movieImage.bottomAnchor,left: leftAnchor,
@@ -77,5 +99,11 @@ class TopImageBottomLabelCell: UICollectionViewCell {
     private func configure() {
         movieImage.sd_setImage(with: viewModel?.imageURL)
         movieTitle.text = viewModel?.title
+        
+        if viewModel?.isFavourited  == true {
+            favouriteButton.setImage(UIImage(named: "star"), for: .normal)
+        } else {
+            favouriteButton.setImage(UIImage(named: "unstar"), for: .normal)
+        }
     }
 }

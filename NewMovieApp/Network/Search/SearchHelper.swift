@@ -1,9 +1,7 @@
 //
 //  SearchHelper.swift
 //  NewMovieApp
-//
 //  Created by Erkan Emir on 25.04.23.
-//
 
 import Foundation
 

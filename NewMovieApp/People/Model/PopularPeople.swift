@@ -22,6 +22,8 @@ struct PopularPerson: Codable {
 
 // MARK: - Result
 struct PeopleResult: Codable,TopImageBottomLabelCellProtocol {
+    var movieID: Int { id ?? 0}
+    
     
     let adult: Bool?
     let gender, id: Int?

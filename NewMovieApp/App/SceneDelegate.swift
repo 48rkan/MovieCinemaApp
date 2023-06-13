@@ -16,30 +16,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
         window?.rootViewController = TabBarController()
         GenreClass.shared.fetchAllGenre()
+        FavouritedClass.shared.fetchFavourited()
         window?.makeKeyAndVisible()
         
-        print("willConnectTo called")
     }
-
-    func sceneDidDisconnect(_ scene: UIScene) {
-        print("sceneDidDisconnect called")
-    }
-
-    func sceneDidBecomeActive(_ scene: UIScene)  {
-        print("sceneDidBecomeActive called")
-    }
-
-    func sceneWillResignActive(_ scene: UIScene)   {
-        print("sceneWillResignActive called")
-    }
-
-    func sceneWillEnterForeground(_ scene: UIScene)  {
-        print("sceneWillEnterForeground called")
-    }
-
-    func sceneDidEnterBackground(_ scene: UIScene)     {
-        print("sceneDidEnterBackground called")
-    }
-
 }
 

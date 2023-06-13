@@ -1,9 +1,7 @@
 //
 //  HomeManagerProtocol.swift
 //  NewMovieApp
-//
 //  Created by Erkan Emir on 27.04.23.
-//
 
 import Foundation
 

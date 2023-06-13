@@ -1,9 +1,6 @@
-//
 //  AppDelegate.swift
 //  NewMovieApp
-//
 //  Created by Erkan Emir on 08.04.23.
-//
 
 import UIKit
 

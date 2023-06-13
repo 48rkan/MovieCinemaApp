@@ -1,9 +1,6 @@
-//
 //  HomeHelper.swift
 //  NewMovieApp
-//
 //  Created by Erkan Emir on 21.04.23.
-//
 
 import Foundation
 

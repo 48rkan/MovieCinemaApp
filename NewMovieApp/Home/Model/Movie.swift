@@ -21,21 +21,17 @@ struct Movie: Codable {
 }
 
 extension Result: MoviesCellProtocol {
-    
-    var title_: String  { title ?? "" }
-    
-    var imageUrl_: String { posterPath ?? ""}
-    
-    var imdbPoint_: Double { voteAverage ?? 0 }
-    
-    var genres_: [Int] { genreIDS ?? [] }
-    
-    var date: String { releaseDate ?? "" }
+    var title_    : String { title       ?? "" }
+    var imageUrl_ : String { posterPath  ?? "" }
+    var imdbPoint_: Double { voteAverage ?? 0  }
+    var genres_   : [Int]  { genreIDS    ?? [] }
+    var date      : String { releaseDate ?? "" }
 }
 
 // MARK: - Result
 struct Result: Codable, TopImageBottomLabelCellProtocol {
     
+        
     let adult: Bool?
     let backdropPath: String?
     let genreIDS: [Int]?
@@ -51,6 +47,9 @@ struct Result: Codable, TopImageBottomLabelCellProtocol {
     var imageURL: String { posterPath ?? ""}
     
     var titleText: String { title ?? "" }
+    
+    var movieID: Int { id ?? 0 }
+
 
     enum CodingKeys: String, CodingKey {
         case adult

@@ -17,8 +17,6 @@ class RegisterController: UIViewController {
         guard let url = URL(string: "https://www.themoviedb.org/signup") else { return }
         
         webView.load(URLRequest(url: url))
-
-
     }
     
     func configureUI() {
@@ -26,9 +24,5 @@ class RegisterController: UIViewController {
         
         view.addSubview(webView)
         webView.anchor(top: view.safeAreaLayoutGuide.topAnchor,left: view.leftAnchor,bottom: view.safeAreaLayoutGuide.bottomAnchor,right: view.rightAnchor,paddingTop: 0,paddingLeft: 0,paddingBottom: 0,paddingRight: 0)
-        
-     
     }
-    
-
 }

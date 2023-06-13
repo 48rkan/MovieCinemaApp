@@ -6,7 +6,13 @@
 
 import UIKit
 
+protocol LoginControllerDelegate: AnyObject {
+    func authCompleted(id: String)
+}
+
 class LoginController: UIViewController {
+    
+    weak var delegate: LoginControllerDelegate?
     
     var viewModel = LoginViewModel()
     //"Aslanaslan44",
@@ -21,7 +27,7 @@ class LoginController: UIViewController {
     }()
     
     private lazy var passwordTextField: CustomTextField = {
-        let tf = CustomTextField(placeholder: "Password",isSecure: true)
+        let tf = CustomTextField(placeholder: "Password",isSecure: false)
         tf.addTarget(self, action: #selector(editingChangedTextFields), for: .editingChanged)
         tf.text = "aslan444"
         return tf
@@ -85,15 +91,13 @@ class LoginController: UIViewController {
     }
     
     @objc func tappedLogIn() {
-        guard let email = emailTextField.text?.lowercased() else { return }
-        guard let password = passwordTextField.text?.lowercased() else { return }
-        
         viewModel.getAccountDatas()
-                
-        if UserDefaults.standard.bool(forKey: "USER-SUCCESS") == true {
-            self.dismiss(animated: true)
-        }
         
+        viewModel.callBack = { id in
+            UserDefaults.standard.set(true, forKey: "SUCCESS_LOGIN")
+            self.dismiss(animated: true)
+            self.delegate?.authCompleted(id: id)
+        }
     }
     
     @objc func goRegister() {

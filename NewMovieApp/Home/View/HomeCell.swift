@@ -39,6 +39,8 @@ class HomeCell: UICollectionViewCell {
         return button
     }()
     
+
+    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection         = .horizontal
@@ -85,6 +87,7 @@ class HomeCell: UICollectionViewCell {
                            paddingTop: 4,paddingRight: 11.45)
         rightButton.setDimensions(height: 22.9, width: 61.07)
         
+        
         addSubview(collectionView)
         collectionView.anchor(top: titleLabel.bottomAnchor,left: leftAnchor,
                               bottom: bottomAnchor,right: rightAnchor,
@@ -93,7 +96,11 @@ class HomeCell: UICollectionViewCell {
     }
 }
 
-extension HomeCell: UICollectionViewDelegate { }
+extension HomeCell: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        print(viewModel?.items.movies[indexPath.row].id)
+    }
+}
 
 extension HomeCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { viewModel?.items.movies.count ?? 0 }
@@ -101,6 +108,7 @@ extension HomeCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(TopImageBottomLabelCell.self)", for: indexPath) as! TopImageBottomLabelCell
+        cell.delegate = self
         cell.viewModel = TopImageBottomLabelCellViewModel(items: (viewModel?.items.movies[indexPath.row])! )
 
         return cell
@@ -109,4 +117,13 @@ extension HomeCell: UICollectionViewDataSource {
 
 extension HomeCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize { CGSize(width: 167, height: 290) }
+}
+
+extension HomeCell: TopImageBottomLabelCellDelegate {
+    func doFavourite(_ cell: TopImageBottomLabelCell, id: Int) {
+        print(id)
+        viewModel?.favouriteClicked(movieID: id)
+        cell.favouriteButton.setImage(UIImage(named: "star"), for: .normal)
+
+    }
 }
