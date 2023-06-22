@@ -14,13 +14,7 @@ public class CoreHelper {
     private let BASE_URL = "https://api.themoviedb.org/3"
     private let API_KEY  = "5bc3ffff4513f80ff29d4556233e1fb8"
     
-//    private lazy var token = Keychain.shared.get("ACCESS_TOKEN")
-//
-//    let header: HTTPHeaders = [
-//        "Authorization": token
-//    ]
-    
-    lazy var header: HTTPHeaders = {
+    private lazy var header: HTTPHeaders = {
         let token = Keychain.shared.get("ACCESS_TOKEN")
         
         return [
